@@ -244,6 +244,9 @@ with tf.Session() as sess:
             train_loss += batch_loss
             train_acc += batch_acc
             pre_index += batch_size
+            line = "iter: %d/%d, train_loss: %.4f, train_acc: %.4f \n" % (
+                step, iteration, train_loss, train_acc)
+            print(line)
 
 
         train_loss /= iteration # average loss
@@ -265,4 +268,4 @@ with tf.Session() as sess:
         with open('logs.txt', 'a') as f:
             f.write(line)
 
-        saver.save(sess=sess, save_path='./model/ResNeXt.ckpt')
+        saver.save(sess=sess, save_path='.drive/model/ResNeXt.ckpt')
