@@ -21,7 +21,7 @@ thus, total number of layers = (3*blocks)*residual_layer_num + 2
 
 depth = 64 # out channel
 
-batch_size = 128
+batch_size = 32
 iteration = 391
 # 128 * 391 ~ 50,000
 
