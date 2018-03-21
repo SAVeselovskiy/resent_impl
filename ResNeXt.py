@@ -204,13 +204,13 @@ accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
 saver = tf.train.Saver(tf.global_variables())
 
 with tf.Session() as sess:
-    ckpt = tf.train.get_checkpoint_state('./drive/model')
+    ckpt = tf.train.get_checkpoint_state('../drive/model')
     if ckpt and tf.train.checkpoint_exists(ckpt.model_checkpoint_path):
         saver.restore(sess, ckpt.model_checkpoint_path)
     else:
         sess.run(tf.global_variables_initializer())
 
-    summary_writer = tf.summary.FileWriter('./drive/logs', sess.graph)
+    summary_writer = tf.summary.FileWriter('../drive/logs', sess.graph)
 
     epoch_learning_rate = init_learning_rate
     for epoch in range(1, total_epochs + 1):
@@ -265,7 +265,7 @@ with tf.Session() as sess:
             epoch, total_epochs, train_loss, train_acc, test_loss, test_acc)
         print(line)
 
-        with open('logs.txt', 'a') as f:
+        with open('../drive/logs.txt', 'a') as f:
             f.write(line)
 
-        saver.save(sess=sess, save_path='./drive/model/ResNeXt.ckpt')
+        saver.save(sess=sess, save_path='../drive/model/ResNeXt.ckpt')
